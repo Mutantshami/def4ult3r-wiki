@@ -41,19 +41,19 @@ The application returns a subtly different error message depending on whether a 
 
 **Step 1:** In Burp Intruder, set the username field as the payload position and load the candidate username wordlist. Launch the attack and watch for responses that differ from the standard "Invalid username" message.
 
-![Brute-forcing usernames in Burp Intruder](<../../.gitbook/assets/Unknown image>)
+![Brute-forcing usernames in Burp Intruder](<../../.gitbook/assets/Unknown image (22)>)
 
 **Step 2:** The response for the correct username changes to "Incorrect password" — confirming it exists. Note the username.
 
-![Different response revealing valid username](<../../.gitbook/assets/Unknown image (1)>)
+![Different response revealing valid username](<../../.gitbook/assets/Unknown image (1) (1)>)
 
 **Step 3:** Now set the valid username as fixed and brute-force the password field with the candidate password list.
 
-![Brute-forcing password for confirmed username](<../../.gitbook/assets/Unknown image (2)>)
+![Brute-forcing password for confirmed username](<../../.gitbook/assets/Unknown image (2) (1)>)
 
 **Step 4:** A 302 redirect response indicates a successful login. Log in with the discovered credentials.
 
-![Successful login — lab solved](<../../.gitbook/assets/Unknown image (3)>)
+![Successful login — lab solved](<../../.gitbook/assets/Unknown image (3) (1)>)
 
 ### Key Takeaway
 
@@ -76,11 +76,11 @@ The 2FA verification step is not enforced server-side. After a successful passwo
 
 **Step 1:** Log in as `wiener:peter`. When prompted for the 2FA code, observe that the URL changes to `/login2`. Enter the code normally and note that the next URL is `/my-account`.
 
-![2FA page after wiener login](<../../.gitbook/assets/Unknown image (4)>)
+![2FA page after wiener login](<../../.gitbook/assets/Unknown image (4) (1)>)
 
 **Step 2:** Now log in as `carlos:montoya`. When the 2FA prompt appears, instead of entering the code, manually change the URL from `/login2` to `/my-account`.
 
-![Bypassing 2FA by navigating directly to /my-account](<../../.gitbook/assets/Unknown image (5)>)
+![Bypassing 2FA by navigating directly to /my-account](<../../.gitbook/assets/Unknown image (5) (1)>)
 
 The server grants access without verifying the 2FA code — lab solved.
 
@@ -107,7 +107,7 @@ The password reset flow uses a temporary token sent via email, but also includes
 
 **Step 2:** In the intercepted request, observe the hidden `temp-forgot-password-token` field and a `username` field. Remove the token value (set it to empty) and change `username` to `carlos`.
 
-![Modified password reset request — username changed to carlos, token removed](<../../.gitbook/assets/Unknown image (6)>)
+![Modified password reset request — username changed to carlos, token removed](<../../.gitbook/assets/Unknown image (6) (1)>)
 
 **Step 3:** Forward the request. The server processes the reset for carlos's account. Log in as `carlos` using the new password you set.
 
@@ -131,15 +131,15 @@ The application takes longer to process login requests when the username is vali
 
 **Step 1:** Use Burp Intruder in **Pitchfork** mode with two payload positions: the `X-Forwarded-For` header (incrementing IP addresses to bypass rate limiting) and the username field.
 
-![Pitchfork attack — X-Forwarded-For + username](<../../.gitbook/assets/Unknown image (7)>)
+![Pitchfork attack — X-Forwarded-For + username](<../../.gitbook/assets/Unknown image (7) (1)>)
 
 **Step 2:** Sort results by response time. The valid username produces a noticeably longer response due to password hash computation.
 
-![Response time spike reveals valid username](<../../.gitbook/assets/Unknown image (8)>)
+![Response time spike reveals valid username](<../../.gitbook/assets/Unknown image (8) (1)>)
 
 **Step 3:** Repeat with the confirmed username fixed, now brute-forcing the password field (still rotating IPs).
 
-![Password brute-force with confirmed username](<../../.gitbook/assets/Unknown image (9)>)
+![Password brute-force with confirmed username](<../../.gitbook/assets/Unknown image (9) (1)>)
 
 ### Key Takeaway
 
@@ -161,21 +161,21 @@ The application returns nearly identical error messages for invalid usernames an
 
 **Step 1:** Run a username enumeration attack in Burp Intruder. Use the "Grep - Extract" or "Grep - Match" feature to flag responses where the error message differs slightly from the baseline.
 
-![Username enumeration — grep for subtle message difference](<../../.gitbook/assets/Unknown image (10)>)
+![Username enumeration — grep for subtle message difference](<../../.gitbook/assets/Unknown image (10) (1)>)
 
-![Intruder results highlighting anomalous response](<../../.gitbook/assets/Unknown image (11)>)
+![Intruder results highlighting anomalous response](<../../.gitbook/assets/Unknown image (11) (1)>)
 
 **Step 2:** The username `adserver` produces a response with noticeably lower response length — indicating a subtly different message (missing trailing character or punctuation in the error).
 
-![adserver identified as valid username via response length](<../../.gitbook/assets/Unknown image (12)>)
+![adserver identified as valid username via response length](<../../.gitbook/assets/Unknown image (12) (1)>)
 
 **Step 3:** Brute-force the password for `adserver`. The password `987654321` returns a shorter response (and eventually a 302 redirect).
 
-![Password 987654321 identified via response length](<../../.gitbook/assets/Unknown image (13)>)
+![Password 987654321 identified via response length](<../../.gitbook/assets/Unknown image (13) (1)>)
 
 **Step 4:** Log in with the discovered credentials.
 
-![Successful login — lab solved](<../../.gitbook/assets/Unknown image (14)>)
+![Successful login — lab solved](<../../.gitbook/assets/Unknown image (14) (1)>)
 
 ### Key Takeaway
 
@@ -197,21 +197,21 @@ The application blocks an IP after too many failed login attempts. However, this
 
 **Step 1:** Build a combined username/password list where every third entry is your own valid credentials (`wiener:peter`), with the attack credentials interspersed.
 
-![Combined payload list — valid credentials every Nth entry](<../../.gitbook/assets/Unknown image (15)>)
+![Combined payload list — valid credentials every Nth entry](<../../.gitbook/assets/Unknown image (15) (1)>)
 
 **Step 2:** Load the password candidates alongside the rotation logic.
 
-![Password list used in the attack](<../../.gitbook/assets/Unknown image (16)>)
+![Password list used in the attack](<../../.gitbook/assets/Unknown image (16) (1)>)
 
 **Step 3:** Run the Intruder attack. Each successful login of `wiener` resets the lockout counter, allowing the brute-force to continue uninterrupted.
 
-![Attack running — lockout bypassed via periodic valid login](<../../.gitbook/assets/Unknown image (17)>)
+![Attack running — lockout bypassed via periodic valid login](<../../.gitbook/assets/Unknown image (17) (1)>)
 
-![Correct password identified in results](<../../.gitbook/assets/Unknown image (18)>)
+![Correct password identified in results](<../../.gitbook/assets/Unknown image (18) (1)>)
 
 **Step 4:** Log in with the victim's discovered credentials.
 
-![Successful login — lab solved](<../../.gitbook/assets/Unknown image (19)>)
+![Successful login — lab solved](<../../.gitbook/assets/Unknown image (19) (1)>)
 
 ### Key Takeaway
 
@@ -233,15 +233,15 @@ The application changes its response length depending on whether the username is
 
 **Step 1:** Use Burp Intruder in **Sniper** mode on the username field. After the attack, sort results by response length. The valid username `pi` produces a noticeably longer response.
 
-![Username pi identified via max response length](<../../.gitbook/assets/Unknown image (20)>)
+![Username pi identified via max response length](<../../.gitbook/assets/Unknown image (20) (1)>)
 
 **Step 2:** Fix the username as `pi` and brute-force the password. Sort by response length — the correct password `nicole` produces the longest response (or a redirect).
 
-![Password nicole identified via response length](<../../.gitbook/assets/Unknown image (21)>)
+![Password nicole identified via response length](<../../.gitbook/assets/Unknown image (21) (1)>)
 
 **Step 3:** Log in with `pi:nicole`.
 
-![Successful login — lab solved](<../../.gitbook/assets/Unknown image (22)>)
+![Successful login — lab solved](<../../.gitbook/assets/Unknown image (22) (1)>)
 
 ### Key Takeaway
 

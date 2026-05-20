@@ -7,4 +7,5 @@
 * [Portswigger Labs Solved](webapp-labs/portswigger-labs-solved/README.md)
   * [access\_controls\_writeup](webapp-labs/portswigger-labs-solved/access_controls_writeup.md)
   * [authentication\_writeup](webapp-labs/portswigger-labs-solved/authentication_writeup.md)
-* [CRTA Lab Practice](webapp-labs/crta-lab-practice.md)
+* [CRTA Lab Practice](webapp-labs/crta-lab-practice/README.md)
+  * [CRTA\_Lab\_Writeup](webapp-labs/crta-lab-practice/crta_lab_writeup.md)
