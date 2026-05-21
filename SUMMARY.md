@@ -10,5 +10,6 @@
   * [OS Command Injection Writeup](webapp-labs/portswigger-labs-solved/os-command-injection-writeup.md)
   * [File Upload Vulnerabilities Writeup](webapp-labs/portswigger-labs-solved/file-upload-vulnerabilities-writeup.md)
   * [Path Traversal Writeup](webapp-labs/portswigger-labs-solved/path-traversal-writeup.md)
+  * [Race Condition Writeup](webapp-labs/portswigger-labs-solved/race-condition-writeup.md)
 * [CRTA Lab Practice](webapp-labs/crta-lab-practice/README.md)
   * [CRTA Lab Writeup](webapp-labs/crta-lab-practice/crta-lab-writeup.md)
