@@ -8,5 +8,6 @@
   * [Access Controls](webapp-labs/portswigger-labs-solved/access-controls.md)
   * [Authentication](webapp-labs/portswigger-labs-solved/authentication.md)
   * [OS Command Injection Writeup](webapp-labs/portswigger-labs-solved/os-command-injection-writeup.md)
+  * [File Upload Vulnerabilities Writeup](webapp-labs/portswigger-labs-solved/file-upload-vulnerabilities-writeup.md)
 * [CRTA Lab Practice](webapp-labs/crta-lab-practice/README.md)
   * [CRTA Lab Writeup](webapp-labs/crta-lab-practice/crta-lab-writeup.md)
