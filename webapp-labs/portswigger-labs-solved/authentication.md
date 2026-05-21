@@ -1,4 +1,4 @@
-# authentication\_writeup
+# Authentication
 
 > **Topic:** Authentication Vulnerabilities\
 > **Platform:** [PortSwigger Web Security Academy](https://portswigger.net/web-security/authentication)\
@@ -10,20 +10,20 @@ Authentication vulnerabilities arise when an application fails to properly verif
 
 ## Table of Contents
 
-* [Lab 1 — Username Enumeration via Different Responses](authentication_writeup.md#lab-1--username-enumeration-via-different-responses)
-* [Lab 2 — 2FA Simple Bypass](authentication_writeup.md#lab-2--2fa-simple-bypass)
-* [Lab 3 — Password Reset Broken Logic](authentication_writeup.md#lab-3--password-reset-broken-logic)
-* [Lab 4 — Username Enumeration via Response Timing (Pitchfork)](authentication_writeup.md#lab-4--username-enumeration-via-response-timing-pitchfork)
-* [Lab 5 — Username Enumeration via Subtly Different Responses](authentication_writeup.md#lab-5--username-enumeration-via-subtly-different-responses)
-* [Lab 6 — Brute-Force Protection Bypass via IP Rotation](authentication_writeup.md#lab-6--brute-force-protection-bypass-via-ip-rotation)
-* [Lab 7 — Username Enumeration via Response Length (Cluster Bomb)](authentication_writeup.md#lab-7--username-enumeration-via-response-length-cluster-bomb)
-* [Lab 8 — 2FA Broken Logic](authentication_writeup.md#lab-8--2fa-broken-logic)
-* [Lab 9 — Brute-Forcing a Stay-Logged-In Cookie](authentication_writeup.md#lab-9--brute-forcing-a-stay-logged-in-cookie)
-* [Lab 10 — Offline Password Cracking via XSS](authentication_writeup.md#lab-10--offline-password-cracking-via-xss)
-* [Lab 11 — Password Reset Poisoning via Host Header](authentication_writeup.md#lab-11--password-reset-poisoning-via-host-header)
-* [Lab 12 — Password Brute-Force via Password Change](authentication_writeup.md#lab-12--password-brute-force-via-password-change)
-* [Lab 13 — Brute-Force via JSON Content-Type Bypass](authentication_writeup.md#lab-13--brute-force-via-json-content-type-bypass)
-* [Lab 14 — 2FA Brute-Force with Macro](authentication_writeup.md#lab-14--2fa-brute-force-with-macro)
+* [Lab 1 — Username Enumeration via Different Responses](authentication.md#lab-1--username-enumeration-via-different-responses)
+* [Lab 2 — 2FA Simple Bypass](authentication.md#lab-2--2fa-simple-bypass)
+* [Lab 3 — Password Reset Broken Logic](authentication.md#lab-3--password-reset-broken-logic)
+* [Lab 4 — Username Enumeration via Response Timing (Pitchfork)](authentication.md#lab-4--username-enumeration-via-response-timing-pitchfork)
+* [Lab 5 — Username Enumeration via Subtly Different Responses](authentication.md#lab-5--username-enumeration-via-subtly-different-responses)
+* [Lab 6 — Brute-Force Protection Bypass via IP Rotation](authentication.md#lab-6--brute-force-protection-bypass-via-ip-rotation)
+* [Lab 7 — Username Enumeration via Response Length (Cluster Bomb)](authentication.md#lab-7--username-enumeration-via-response-length-cluster-bomb)
+* [Lab 8 — 2FA Broken Logic](authentication.md#lab-8--2fa-broken-logic)
+* [Lab 9 — Brute-Forcing a Stay-Logged-In Cookie](authentication.md#lab-9--brute-forcing-a-stay-logged-in-cookie)
+* [Lab 10 — Offline Password Cracking via XSS](authentication.md#lab-10--offline-password-cracking-via-xss)
+* [Lab 11 — Password Reset Poisoning via Host Header](authentication.md#lab-11--password-reset-poisoning-via-host-header)
+* [Lab 12 — Password Brute-Force via Password Change](authentication.md#lab-12--password-brute-force-via-password-change)
+* [Lab 13 — Brute-Force via JSON Content-Type Bypass](authentication.md#lab-13--brute-force-via-json-content-type-bypass)
+* [Lab 14 — 2FA Brute-Force with Macro](authentication.md#lab-14--2fa-brute-force-with-macro)
 
 ***
 
