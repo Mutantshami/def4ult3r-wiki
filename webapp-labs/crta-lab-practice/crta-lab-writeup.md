@@ -1,4 +1,4 @@
-# CRTA\_Lab\_Writeup
+# CRTA Lab Writeup
 
 **Author:** CRTA Lab Exercise\
 **Type:** Red Team Engagement\
@@ -9,23 +9,23 @@
 
 ## Table of Contents
 
-1. [Executive Summary](crta_lab_writeup.md#executive-summary)
-2. [Scope & Environment](crta_lab_writeup.md#scope--environment)
-3. [Phase 1 — Web Application Recon & Command Injection](crta_lab_writeup.md#phase-1--web-application-recon--command-injection)
-4. [Phase 2 — Linux System Enumeration](crta_lab_writeup.md#phase-2--linux-system-enumeration)
-5. [Phase 3 — SSH Access (Stable Shell)](crta_lab_writeup.md#phase-3--ssh-access-stable-shell)
-6. [Phase 4 — Internal Network Discovery](crta_lab_writeup.md#phase-4--internal-network-discovery)
-7. [Phase 5 — Pivoting with Ligolo-ng & ProxyChains](crta_lab_writeup.md#phase-5--pivoting-with-ligolo-ng--proxychains)
-8. [Phase 6 — Internal Host Discovery via Nmap](crta_lab_writeup.md#phase-6--internal-host-discovery-via-nmap)
-9. [Phase 7 — Browser Artifact & Credential Discovery](crta_lab_writeup.md#phase-7--browser-artifact--credential-discovery)
-10. [Phase 8 — MGMT Server Compromise](crta_lab_writeup.md#phase-8--mgmt-server-compromise)
-11. [Phase 9 — BloodHound AD Enumeration](crta_lab_writeup.md#phase-9--bloodhound-ad-enumeration)
-12. [Phase 10 — Credential Dumping with Mimikatz](crta_lab_writeup.md#phase-10--credential-dumping-with-mimikatz)
-13. [Phase 11 — Domain Admin Escalation via GenericWrite](crta_lab_writeup.md#phase-11--domain-admin-escalation-via-genericwrite)
-14. [Phase 12 — DCSync Attack](crta_lab_writeup.md#phase-12--dcsync-attack)
-15. [Phase 13 — Golden Ticket Attack](crta_lab_writeup.md#phase-13--golden-ticket-attack)
-16. [Full Attack Chain Summary](crta_lab_writeup.md#full-attack-chain-summary)
-17. [Defensive Recommendations](crta_lab_writeup.md#defensive-recommendations)
+1. [Executive Summary](crta-lab-writeup.md#executive-summary)
+2. [Scope & Environment](crta-lab-writeup.md#scope--environment)
+3. [Phase 1 — Web Application Recon & Command Injection](crta-lab-writeup.md#phase-1--web-application-recon--command-injection)
+4. [Phase 2 — Linux System Enumeration](crta-lab-writeup.md#phase-2--linux-system-enumeration)
+5. [Phase 3 — SSH Access (Stable Shell)](crta-lab-writeup.md#phase-3--ssh-access-stable-shell)
+6. [Phase 4 — Internal Network Discovery](crta-lab-writeup.md#phase-4--internal-network-discovery)
+7. [Phase 5 — Pivoting with Ligolo-ng & ProxyChains](crta-lab-writeup.md#phase-5--pivoting-with-ligolo-ng--proxychains)
+8. [Phase 6 — Internal Host Discovery via Nmap](crta-lab-writeup.md#phase-6--internal-host-discovery-via-nmap)
+9. [Phase 7 — Browser Artifact & Credential Discovery](crta-lab-writeup.md#phase-7--browser-artifact--credential-discovery)
+10. [Phase 8 — MGMT Server Compromise](crta-lab-writeup.md#phase-8--mgmt-server-compromise)
+11. [Phase 9 — BloodHound AD Enumeration](crta-lab-writeup.md#phase-9--bloodhound-ad-enumeration)
+12. [Phase 10 — Credential Dumping with Mimikatz](crta-lab-writeup.md#phase-10--credential-dumping-with-mimikatz)
+13. [Phase 11 — Domain Admin Escalation via GenericWrite](crta-lab-writeup.md#phase-11--domain-admin-escalation-via-genericwrite)
+14. [Phase 12 — DCSync Attack](crta-lab-writeup.md#phase-12--dcsync-attack)
+15. [Phase 13 — Golden Ticket Attack](crta-lab-writeup.md#phase-13--golden-ticket-attack)
+16. [Full Attack Chain Summary](crta-lab-writeup.md#full-attack-chain-summary)
+17. [Defensive Recommendations](crta-lab-writeup.md#defensive-recommendations)
 
 ***
 
