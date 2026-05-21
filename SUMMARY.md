@@ -11,5 +11,7 @@
   * [File Upload Vulnerabilities Writeup](webapp-labs/portswigger-labs-solved/file-upload-vulnerabilities-writeup.md)
   * [Path Traversal Writeup](webapp-labs/portswigger-labs-solved/path-traversal-writeup.md)
   * [Race Condition Writeup](webapp-labs/portswigger-labs-solved/race-condition-writeup.md)
+  * [SSRF Writeup](webapp-labs/portswigger-labs-solved/ssrf-writeup.md)
+  * [SSTI Writeup](webapp-labs/portswigger-labs-solved/ssti-writeup.md)
 * [CRTA Lab Practice](webapp-labs/crta-lab-practice/README.md)
   * [CRTA Lab Writeup](webapp-labs/crta-lab-practice/crta-lab-writeup.md)
