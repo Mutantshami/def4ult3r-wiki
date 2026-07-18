@@ -14,5 +14,12 @@
   * [SSRF Writeup](webapp-labs/portswigger-labs-solved/ssrf-writeup.md)
   * [SSTI Writeup](webapp-labs/portswigger-labs-solved/ssti-writeup.md)
   * [XSS Writeup](webapp-labs/portswigger-labs-solved/xss-writeup.md)
-* [CRTA Lab Practice](webapp-labs/crta-lab-practice/README.md)
-  * [CRTA Lab Writeup](webapp-labs/crta-lab-practice/crta-lab-writeup.md)
+
+## Exams
+
+* [CRTA Lab Writeup](exams/crta-lab-writeup.md)
+* [AWS by CyberWarfare Labs  Notes](exams/aws-by-cyberwarfare-labs-notes.md)
+
+## Check Lists
+
+* [AWS](check-lists/aws.md)

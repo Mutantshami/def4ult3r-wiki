@@ -5,8 +5,6 @@
 **Scope:** External Web App → Full Domain Compromise\
 **Classification:** Educational
 
-***
-
 ## Table of Contents
 
 1. [Executive Summary](crta-lab-writeup.md#executive-summary)
@@ -27,8 +25,6 @@
 16. [Full Attack Chain Summary](crta-lab-writeup.md#full-attack-chain-summary)
 17. [Defensive Recommendations](crta-lab-writeup.md#defensive-recommendations)
 
-***
-
 ## Executive Summary
 
 This writeup documents a complete Active Directory compromise performed during the CRTA (Certified Red Team Analyst) lab exercise. The attack chain begins with a vulnerable external web application and ends in **full domain takeover via a Golden Ticket**. It is written so a junior penetration tester can follow every step, understand why each technique works, and use it as a learning reference.
@@ -44,8 +40,6 @@ This writeup documents a complete Active Directory compromise performed during t
 | DCSync — All Domain Hashes        | ✅ Achieved |
 | Golden Ticket Persistence         | ✅ Achieved |
 
-***
-
 ## Scope & Environment
 
 | Network             | Range             | Notes                                                  |
@@ -53,16 +47,17 @@ This writeup documents a complete Active Directory compromise performed during t
 | VPN / Attacker      | `10.10.200.0/24`  | Attacker entry point                                   |
 | External Network    | `192.168.80.0/24` | Hosts vulnerable web app · `192.168.80.1` out of scope |
 | Internal AD Network | `192.168.98.0/24` | Domain Controller & MGMT · `192.168.98.1` out of scope |
+|                     |                   |                                                        |
 
-![Lab environment — network overview](<../../.gitbook/assets/Unknown image>)
+![Lab environment — network overview](<../.gitbook/assets/Unknown image>)
 
 > _Lab environment — network overview_
 
-![Scope detail — external and internal network ranges](<../../.gitbook/assets/Unknown image (1)>)
+![Scope detail — external and internal network ranges](<../.gitbook/assets/Unknown image (1)>)
 
 > _Scope detail — external and internal network ranges_
 
-![Lab environment — Active Directory infrastructure](<../../.gitbook/assets/Unknown image (2)>)
+![Lab environment — Active Directory infrastructure](<../.gitbook/assets/Unknown image (2)>)
 
 > _Lab environment — Active Directory infrastructure_
 
@@ -78,7 +73,7 @@ Identify exposed functionality in the web application and test input fields for 
 
 The application exposed a **login page** and a **signup page**. No obvious vulnerabilities were visible at first glance, so all input fields were manually tested with injection payloads.
 
-![Web application — login and signup pages exposed](<../../.gitbook/assets/Unknown image (3)>)
+![Web application — login and signup pages exposed](<../.gitbook/assets/Unknown image (3)>)
 
 > _Web application — login and signup pages exposed_
 
@@ -100,15 +95,15 @@ test@test.com && whoami
 
 Both payloads executed successfully on the backend Linux server, confirming **full OS-level Remote Code Execution (RCE)**.
 
-![Injection payload — testing the email parameter](<../../.gitbook/assets/Unknown image (4)>)
+![Injection payload — testing the email parameter](<../.gitbook/assets/Unknown image (4)>)
 
 > _Injection payload — testing the email parameter_
 
-![RCE confirmed — command output returned in the HTTP response](<../../.gitbook/assets/Unknown image (5)>)
+![RCE confirmed — command output returned in the HTTP response](<../.gitbook/assets/Unknown image (5)>)
 
 > _RCE confirmed — command output returned in the HTTP response_
 
-![Arbitrary command execution — full shell access via the web app](<../../.gitbook/assets/Unknown image (6)>)
+![Arbitrary command execution — full shell access via the web app](<../.gitbook/assets/Unknown image (6)>)
 
 > _Arbitrary command execution — full shell access via the web app_
 
@@ -127,7 +122,7 @@ Username: privilege
 Password: Admin@962
 ```
 
-![Plaintext credentials found on the server](<../../.gitbook/assets/Unknown image (7)>)
+![Plaintext credentials found on the server](<../.gitbook/assets/Unknown image (7)>)
 
 > _Plaintext credentials found on the server_
 
@@ -183,7 +178,7 @@ ssh privilege@192.168.80.10
 
 Authentication succeeded and a full interactive terminal was obtained.
 
-![SSH login — authenticated as 'privilege' using recovered credentials](<../../.gitbook/assets/Unknown image (8)>)
+![SSH login — authenticated as 'privilege' using recovered credentials](<../.gitbook/assets/Unknown image (8)>)
 
 > _SSH login — authenticated as 'privilege' using recovered credentials_
 
@@ -336,11 +331,11 @@ LinPEAS (Linux Privilege Escalation Awesome Script) was run on the compromised h
 
 LinPEAS discovered **Firefox browser databases** in the user's home directory — SQLite files that store saved passwords, cookies, and session data.
 
-![LinPEAS output — browser database identified on the system](<../../.gitbook/assets/Unknown image (9)>)
+![LinPEAS output — browser database identified on the system](<../.gitbook/assets/Unknown image (9)>)
 
 > _LinPEAS output — browser database identified on the system_
 
-![Firefox profile directory — SQLite database location found](<../../.gitbook/assets/Unknown image (10)>)
+![Firefox profile directory — SQLite database location found](<../.gitbook/assets/Unknown image (10)>)
 
 > _Firefox profile directory — SQLite database location found_
 
@@ -362,7 +357,7 @@ sqlite3 ~/.mozilla/firefox/*/cookies.sqlite
 SELECT * FROM moz_cookies;
 ```
 
-![SQLite query — Active Directory credentials recovered from Firefox database](<../../.gitbook/assets/Unknown image (11)>)
+![SQLite query — Active Directory credentials recovered from Firefox database](<../.gitbook/assets/Unknown image (11)>)
 
 > _SQLite query — Active Directory credentials recovered from Firefox database_
 
@@ -409,7 +404,7 @@ proxychains nxc smb 192.168.98.30 \
 SMB  192.168.98.30  445  john  [+] child.warfare.corp\john:User1@#$%6 (Pwn3d!)
 ```
 
-![NetExec — (Pwn3d!) confirms john has local administrator privileges on MGMT](<../../.gitbook/assets/Unknown image (12)>)
+![NetExec — (Pwn3d!) confirms john has local administrator privileges on MGMT](<../.gitbook/assets/Unknown image (12)>)
 
 > _NetExec — (Pwn3d!) confirms john has local administrator privileges on MGMT_
 
@@ -436,7 +431,7 @@ BloodHound collects AD relationship data (users, groups, ACLs, sessions, trusts)
 * Where privileged users currently have active sessions
 * The shortest attack path from any account to Domain Admin
 
-![BloodHound — attack path visualisation from john to Domain Admin](<../../.gitbook/assets/Unknown image (13)>)
+![BloodHound — attack path visualisation from john to Domain Admin](<../.gitbook/assets/Unknown image (13)>)
 
 > _BloodHound — attack path visualisation from john to Domain Admin_
 
@@ -475,7 +470,7 @@ Dump the **CORPMNGR** account's credentials from LSASS memory on the MGMT server
 
 LSASS (Local Security Authority Subsystem Service) is a core Windows process that manages authentication. It **caches the credentials of all users who have logged in** to the machine — including their NTLM hashes and, in some configurations, plaintext passwords. With local administrator access, Mimikatz can read this process's memory and extract those cached credentials.
 
-![CORPMNGR active session on MGMT — confirmed credential dump target](<../../.gitbook/assets/Unknown image (14)>)
+![CORPMNGR active session on MGMT — confirmed credential dump target](<../.gitbook/assets/Unknown image (14)>)
 
 > _CORPMNGR active session on MGMT — confirmed credential dump target_
 
@@ -517,7 +512,7 @@ proxychains nxc smb 192.168.98.30 \
 | `sekurlsa::logonpasswords` | Dumps all credentials cached in LSASS memory                |
 | `exit`                     | Closes Mimikatz cleanly after executing                     |
 
-![Mimikatz output — CORPMNGR NTLM hash successfully extracted from LSASS](<../../.gitbook/assets/Unknown image (15)>)
+![Mimikatz output — CORPMNGR NTLM hash successfully extracted from LSASS](<../.gitbook/assets/Unknown image (15)>)
 
 > _Mimikatz output — CORPMNGR NTLM hash successfully extracted from LSASS_
 
@@ -564,7 +559,7 @@ Once authenticated to the Domain Controller as CORPMNGR:
 net group "Domain Admins" john /add /domain
 ```
 
-![net group command — john successfully added to the Domain Admins group](<../../.gitbook/assets/Unknown image (16)>)
+![net group command — john successfully added to the Domain Admins group](<../.gitbook/assets/Unknown image (16)>)
 
 > _net group command — john successfully added to the Domain Admins group_
 
@@ -608,7 +603,7 @@ proxychains secretsdump.py \
 | `child.warfare.corp/john` | Authenticated as john (now Domain Admin)                            |
 | `@192.168.98.120`         | Target — the Domain Controller's IP address                         |
 
-![DCSync — all domain hashes extracted including the critical KRBTGT hash](<../../.gitbook/assets/Unknown image (17)>)
+![DCSync — all domain hashes extracted including the critical KRBTGT hash](<../.gitbook/assets/Unknown image (17)>)
 
 > _DCSync — all domain hashes extracted including the critical KRBTGT hash_
 
@@ -650,7 +645,7 @@ proxychains lookupsid.py \
   child.warfare.corp/john:'User1@#$%6'@192.168.98.120
 ```
 
-![lookupsid.py — Domain SID successfully retrieved](<../../.gitbook/assets/Unknown image (18)>)
+![lookupsid.py — Domain SID successfully retrieved](<../.gitbook/assets/Unknown image (18)>)
 
 > _lookupsid.py — Domain SID successfully retrieved_
 
@@ -677,7 +672,7 @@ ticketer.py \
 
 This produces a file called `administrator.ccache` — the forged Kerberos ticket.
 
-![ticketer.py — Golden Ticket forged and saved as administrator.ccache](<../../.gitbook/assets/Unknown image (19)>)
+![ticketer.py — Golden Ticket forged and saved as administrator.ccache](<../.gitbook/assets/Unknown image (19)>)
 
 > _ticketer.py — Golden Ticket forged and saved as administrator.ccache_
 
@@ -697,7 +692,7 @@ klist
 
 This command lists all currently loaded Kerberos tickets. You should see a valid TGT for `administrator@child.warfare.corp` with a long validity period.
 
-![klist — forged administrator Golden Ticket loaded and verified](<../../.gitbook/assets/Unknown image (20)>)
+![klist — forged administrator Golden Ticket loaded and verified](<../.gitbook/assets/Unknown image (20)>)
 
 > _klist — forged administrator Golden Ticket loaded and verified_
 
@@ -716,7 +711,7 @@ proxychains wmiexec.py \
 | `-no-pass` | Do not prompt for a password — the ticket handles authentication |
 | `-dc-ip`   | Specify the Domain Controller IP for Kerberos ticket validation  |
 
-![wmiexec.py — full Domain Controller shell obtained via Golden Ticket](<../../.gitbook/assets/Unknown image (21)>)
+![wmiexec.py — full Domain Controller shell obtained via Golden Ticket](<../.gitbook/assets/Unknown image (21)>)
 
 > _wmiexec.py — full Domain Controller shell obtained via Golden Ticket_
 
