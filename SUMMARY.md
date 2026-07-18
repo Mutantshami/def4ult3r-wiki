@@ -14,6 +14,11 @@
   * [SSRF Writeup](webapp-labs/portswigger-labs-solved/ssrf-writeup.md)
   * [SSTI Writeup](webapp-labs/portswigger-labs-solved/ssti-writeup.md)
   * [XSS Writeup](webapp-labs/portswigger-labs-solved/xss-writeup.md)
+* [HTB Writeups](webapp-labs/htb-writeups/README.md)
+  * [Bizness](webapp-labs/htb-writeups/bizness.md)
+  * [Clicker](webapp-labs/htb-writeups/clicker.md)
+  * [Devortex](webapp-labs/htb-writeups/devortex.md)
+  * [Manager](webapp-labs/htb-writeups/manager.md)
 
 ## Exams
 
