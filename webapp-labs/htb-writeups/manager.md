@@ -40,7 +40,7 @@ Add manager.htb and dc01.manager.htb to /etc/hosts.
 
 Since Kerberos is exposed, we can enumerate valid usernames without authentication using **Kerbrute**:
 
-`ash ./kerbrute_linux_amd64 userenum -d manager.htb \ ~/Desktop/SecLists/Usernames/xato-net-10-million-usernames.txt \ --dc 10.10.11.236`
+`bash ./kerbrute_linux_amd64 userenum -d manager.htb \ ~/Desktop/SecLists/Usernames/xato-net-10-million-usernames.txt \ --dc 10.10.11.236`
 
 ![Kerbrute — Valid Usernames Enumerated from manager.htb](<../../.gitbook/assets/Unknown image (308)>)
 

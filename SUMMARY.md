@@ -19,6 +19,8 @@
   * [Clicker](webapp-labs/htb-writeups/clicker.md)
   * [Devortex](webapp-labs/htb-writeups/devortex.md)
   * [Manager](webapp-labs/htb-writeups/manager.md)
+  * [Surveillance](webapp-labs/htb-writeups/surveillance.md)
+  * [Zipping](webapp-labs/htb-writeups/zipping.md)
 
 ## Exams
 
